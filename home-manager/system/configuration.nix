@@ -25,7 +25,7 @@
     };
   };
 
-  hardware.opengl.driSupport32Bit = true;
+  # hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.support32Bit = true;
 
   boot = {
@@ -55,12 +55,12 @@
     };
   };
 
-  networking = {
-    hostName = "nixos-${user}";
-    networkmanager.enable = true;
-    enableIPv6 = false;
-    firewall.enable = false;
-  };
+  # networking = {
+  #   hostName = "nixos-${user}";
+  #   networkmanager.enable = true;
+  #   enableIPv6 = false;
+  #   firewall.enable = false;
+  # };
 
   time.timeZone = "America/Los_Angeles";
 
@@ -71,28 +71,28 @@
     useXkbConfig = true;
   };
 
-  services = {
-    flatpak.enable = true;
-    dbus.enable = true;
-    picom.enable = true;
+  # services = {
+  #   flatpak.enable = true;
+  #   dbus.enable = true;
+  #   picom.enable = true;
 
-    xserver = {
-      enable = true;
-      windowManager.dwm.enable = true;
-      layout = "us";
+  #   xserver = {
+  #     enable = true;
+  #     windowManager.dwm.enable = true;
+  #     layout = "us";
 
-      displayManager = {
-        lightdm.enable = true;
-        setupCommands = ''
-          ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
-        '';
-        autoLogin = {
-          inherit user;
-          enable = true;
-        };
-      };
-    };
-  };
+  #     displayManager = {
+  #       lightdm.enable = true;
+  #       setupCommands = ''
+  #         ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
+  #       '';
+  #       autoLogin = {
+  #         inherit user;
+  #         enable = true;
+  #       };
+  #     };
+  #   };
+  # };
 
 #   nixpkgs.overlays = [
 #     (final: prev: {
@@ -104,17 +104,17 @@
     isNormalUser = true;
     description = user;
     extraGroups = [
-      "flatpak"
-      "disk"
-      "qemu"
-      "kvm"
-      "libvirtd"
-      "sshd"
+      # "flatpak"
+      # "disk"
+      # "qemu"
+      # "kvm"
+      # "libvirtd"
+      # "sshd"
       "networkmanager"
       "wheel"
       "audio"
       "video"
-      "libvirtd"
+      # "libvirtd"
       "root"
     ];
   };
@@ -146,11 +146,11 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   vim
+  # ];
 
-  # virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   xdg.portal = {
     enable = true;
