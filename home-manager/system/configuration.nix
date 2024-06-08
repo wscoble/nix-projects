@@ -21,8 +21,7 @@
       allowUnfree = true;
       # allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName pkg.name).name ["steam"];
 
-      permittedInsecurePackages = [
-      ];
+      permittedInsecurePackages = [];
     };
   };
 
@@ -101,7 +100,7 @@
 #     })
 #   ];
 
-  users.users.${user} = {
+  users.users.sscoble = {
     isNormalUser = true;
     description = user;
     extraGroups = [
