@@ -17,7 +17,7 @@
       user = "sscoble";
     in {
     nixosConfigurations.nixos-mbp = nixpkgs.lib.nixosSystem {
-      system = "x86_64-darwin";
+      system = "x86_64-linux";
       specialArgs = {inherit inputs self user;};
       modules = [
         ./system/configuration.nix
