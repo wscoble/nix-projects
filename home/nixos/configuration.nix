@@ -112,15 +112,44 @@
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    settings = {
-      # Opinionated: forbid root login through SSH.
-      PermitRootLogin = "no";
-      # Opinionated: use keys only.
-      # Remove if you want to SSH using passwords
-      PasswordAuthentication = false;
+
+  services = {
+    flatpak.enable = true;
+    dbus.enable = true;
+    picom.enable = true;
+    # openssh = {
+    #   enable = true;
+    #   settings = {
+    #     # Opinionated: forbid root login through SSH.
+    #     PermitRootLogin = "no";
+    #     # Opinionated: use keys only.
+    #     # Remove if you want to SSH using passwords
+    #     PasswordAuthentication = false;
+    #   };
+    # };
+
+    xserver = {
+      enable = true;
+      windowManager.dwm.enable = true;
+      layout = "us";
+
+      displayManager = {
+        lightdm.enable = true;
+        setupCommands = ''
+          ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
+        '';
+        autoLogin = {
+          inherit user;
+          enable = true;
+        };
+      };
     };
+  };
+
+  console = {
+    packages = [pkgs.terminus_font];
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-i22b.psf.gz";
+    useXkbConfig = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
