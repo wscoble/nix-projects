@@ -40,6 +40,32 @@
     };
   };
 
+  boot = {
+    kernelParams = ["nohibernate"];
+    tmp.cleanOnBoot = true;
+    supportedFilesystems = ["ntfs"];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        device = "nodev";
+        efiSupport = true;
+        enable = true;
+        useOSProber = true;
+        timeoutStyle = "menu";
+      };
+      timeout = 300;
+    };
+
+    kernelModules = ["tcp_bbr"];
+    kernel.sysctl = {
+      "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.core.default_qdisc" = "fq";
+      "net.core.wmem_max" = 1073741824;
+      "net.core.rmem_max" = 1073741824;
+      "net.ipv4.tcp_rmem" = "4096 87380 1073741824";
+      "net.ipv4.tcp_wmem" = "4096 87380 1073741824";
+    };
+  };
 
   networking.hostName = "nixos-sscoble";
 
