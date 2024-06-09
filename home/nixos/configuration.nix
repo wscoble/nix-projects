@@ -130,7 +130,7 @@
 
     xserver = {
       enable = true;
-      windowManager.dwm.enable = true;
+      windowManager.gnome.enable = true;
       xkb.layout = "us";
       
       displayManager = {
