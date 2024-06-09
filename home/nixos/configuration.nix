@@ -131,17 +131,17 @@
     xserver = {
       enable = true;
       windowManager.dwm.enable = true;
-      layout = "us";
-
-      displayManager = {
-        lightdm.enable = true;
-        # setupCommands = ''
-        #   ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
-        # '';
-        autoLogin = {
-          user = "sscoble";
-          enable = true;
-        };
+      xkb.layout = "us";
+    };
+    
+    displayManager = {
+      lightdm.enable = true;
+      # setupCommands = ''
+      #   ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
+      # '';
+      autoLogin = {
+        user = "sscoble";
+        enable = true;
       };
     };
   };
